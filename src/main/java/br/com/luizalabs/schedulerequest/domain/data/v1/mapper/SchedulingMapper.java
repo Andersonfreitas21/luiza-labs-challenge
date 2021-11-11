@@ -1,21 +1,17 @@
 package br.com.luizalabs.schedulerequest.domain.data.v1.mapper;
 
-import lombok.*;
+import br.com.luizalabs.schedulerequest.domain.data.entity.Scheduling;
+import br.com.luizalabs.schedulerequest.domain.data.enums.TypeToSend;
+import br.com.luizalabs.schedulerequest.domain.data.v1.dto.SchedulingDTO;
+import br.com.luizalabs.schedulerequest.domain.data.v1.form.SchedulingForm;
+import org.mapstruct.Mapper;
 
-import javax.persistence.*;
-import java.util.UUID;
+@Mapper(componentModel = "spring", uses = {AddresseeMapper.class})
+public interface SchedulingMapper {
 
-@Builder(builderMethodName = "newBuilder")
-@Getter
-@Setter
-@Entity
-@Table(name = "schedule")
-@AllArgsConstructor
-@NoArgsConstructor
-public class SchedulingMapper {
+    SchedulingDTO toDTO(Scheduling entity);
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID uuid;
-
+    default Scheduling formToEntity(SchedulingForm form, TypeToSend type) {
+        return null;
+    }
 }

@@ -2,8 +2,10 @@ package br.com.luizalabs.schedulerequest.config.swagger;
 
 import static springfox.documentation.builders.PathSelectors.regex;
 
+import com.google.common.base.Predicate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import springfox.documentation.RequestHandler;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -18,11 +20,11 @@ import java.util.ArrayList;
 @EnableSwagger2
 public class SpringFoxConfig {
     @Bean
-    public Docket productApi() {
+    public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("br.com.luizalabs.schedulerequest.api.controller"))
-                .paths(regex("/api.*"))
+                .apis((Predicate<RequestHandler>) RequestHandlerSelectors.basePackage("br.com.luizalabs.schedulerequest.api.controller"))
+                .paths((Predicate<String>) regex("/api.*"))
                 .build()
                 .apiInfo(metaInfo());
     }
