@@ -4,10 +4,11 @@ import lombok.*;
 
 import java.util.List;
 
-@Builder(builderMethodName = "newBuilder")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder(builderMethodName = "newBuilder")
 public class AddresseeDTO {
     private String addressee;
     private String email;

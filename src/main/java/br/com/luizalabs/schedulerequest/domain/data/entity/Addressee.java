@@ -14,26 +14,25 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name = "addressee")
+@Table(name = "addressee", uniqueConstraints = {@UniqueConstraint(columnNames = {"addressee"})})
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(builderMethodName = "newBuilder")
 public class Addressee implements Serializable {
 
     private static final long serialVersionUID = 8034676095293542006L;
-    //uniqueConstraints = {@UniqueConstraint(columnNames = {"addressee"})}
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID uuid;
 
-    @ApiModelProperty(notes = "Contact address", name = "addressee", required = true, value = "Email or Contact number")
+    @ApiModelProperty(notes = "Name address", name = "addressee", required = true, value = "Name address")
     private String addressee;
 
-    @Email(message = "Invalid email")
     private String email;
 
     @Column(name = "contact_number")
+    @ApiModelProperty(notes = "Contact address", name = "addressee", required = true, value = "(99)9999-9999")
     private String contactNumber;
 
     @OneToMany(mappedBy = "addressee", fetch = FetchType.LAZY)
@@ -63,17 +62,6 @@ public class Addressee implements Serializable {
 
     public LocalDateTime getUpdatedAt() {
         return this.updatedAt == null ? getCreatedAt() : this.updatedAt;
-    }
-
-    public boolean check(String addressee) {
-        if (addressee.contains("@")) {
-            this.email = addressee;
-            return true;
-        } else if (addressee.matches("\\(\\d{2,}\\)\\d{4,}\\-\\d{4}")) {
-            this.contactNumber = addressee;
-            return true;
-        }
-        return false;
     }
 
 }
