@@ -24,6 +24,8 @@ public class EntityMapperImpl implements EntityMapper {
                 .sendDate(scheduling.getSendDate())
                 .message(scheduling.getMessage())
                 .addressee(toDtoAdd(scheduling.getAddressee()))
+                .status(scheduling.getStatus())
+                .type(scheduling.getType())
                 .build();
     }
 

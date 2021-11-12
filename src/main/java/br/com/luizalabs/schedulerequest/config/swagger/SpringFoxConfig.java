@@ -23,8 +23,8 @@ public class SpringFoxConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis((Predicate<RequestHandler>) RequestHandlerSelectors.basePackage("br.com.luizalabs.schedulerequest.api.controller"))
-                .paths((Predicate<String>) regex("/api.*"))
+                .apis(RequestHandlerSelectors.basePackage("br.com.luizalabs.schedulerequest.api.controller"))
+                .paths(regex("/api.*"))
                 .build()
                 .apiInfo(metaInfo());
     }

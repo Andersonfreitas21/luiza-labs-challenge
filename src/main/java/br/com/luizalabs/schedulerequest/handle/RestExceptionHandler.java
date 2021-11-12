@@ -48,4 +48,16 @@ public class RestExceptionHandler {
                         .message(ex.getClass().getName())
                         .build(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<ExceptionDetails> handlerIllegalStateException(IllegalStateException ex) {
+        return new ResponseEntity<>(
+                ExceptionDetails.newBuilder()
+                        .timestamp(LocalDateTime.now())
+                        .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                        .title("No primary or single unique constructor found for interface")
+                        .details(ex.getMessage())
+                        .message(ex.getClass().getName())
+                        .build(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

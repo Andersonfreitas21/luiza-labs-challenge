@@ -45,7 +45,7 @@ public class SchedulingRequestControllerImpl implements SchedulingRequestControl
                                                 @Valid @RequestBody SchedulingForm schedulingForm,
                                                 @ApiParam(name = "Type", type = "ENUM", value = "How to send a request", example = "WHATSAPP", required = true)
                                                 @RequestParam(value = "Type") TypeToSend toSend) {
-        return ResponseEntity.status(HttpStatus.OK).body(scheduleRequestService.create(schedulingForm, toSend));
+        return ResponseEntity.status(HttpStatus.CREATED).body(scheduleRequestService.create(schedulingForm, toSend));
     }
 
     @Override

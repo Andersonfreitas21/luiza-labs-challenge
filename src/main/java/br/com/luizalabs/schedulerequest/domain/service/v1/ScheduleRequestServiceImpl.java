@@ -68,7 +68,8 @@ public class ScheduleRequestServiceImpl implements ScheduleRequestService<Schedu
         Optional<Scheduling> scheduling = schedulignRequestRepository.findById(UUID.fromString(uuid));
 
         if (scheduling.isPresent()) {
-            schedulignRequestRepository.delete(scheduling.get());
+            scheduling.get().setStatus(StatusOfSchedule.DELETED);
+            schedulignRequestRepository.saveAndFlush(scheduling.get());
         } else {
             throw new NotFoundException(Scheduling.class, "Schedule notfound");
         }
