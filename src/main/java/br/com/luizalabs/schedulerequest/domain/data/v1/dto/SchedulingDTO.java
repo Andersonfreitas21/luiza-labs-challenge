@@ -1,17 +1,18 @@
 package br.com.luizalabs.schedulerequest.domain.data.v1.dto;
 
-import br.com.luizalabs.schedulerequest.domain.data.entity.Addressee;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Builder(toBuilder = true)
 @NoArgsConstructor
-@Builder(builderMethodName = "newBuilder")
+@AllArgsConstructor
+@EqualsAndHashCode
+@Getter
 public class SchedulingDTO {
+    private UUID uuid;
     private LocalDateTime sendDate;
-    private Addressee addressee;
+    private AddresseeDTO addressee;
     private String message;
 }

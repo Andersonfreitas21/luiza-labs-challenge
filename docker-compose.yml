@@ -1,0 +1,50 @@
+version: '3.1'
+services:
+  mysqlsrv:
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: schedule-request
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    volumes:
+      - mysqlsrv-data:/var/lib/mysqlsrv/data
+    networks:
+      - mysql-compose-network
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - mysql-compose-network
+
+  app:
+    container_name: schedule-request
+    build:
+      dockerfile: Dockerfile
+      context: .
+    image: schedule-request:latest
+    environment:
+      - JAVA_OPTIONS=-Xmx384m -Xms256
+    ports:
+      - 5000:5000
+    expose:
+      - 5000
+    restart: unless-stopped
+    depends_on:
+      - mysqlsrv
+    links:
+      - mysqlsrv
+
+volumes:
+  mysqlsrv-data:
+
+networks:
+  mysql-compose-network:
+    driver: bridge

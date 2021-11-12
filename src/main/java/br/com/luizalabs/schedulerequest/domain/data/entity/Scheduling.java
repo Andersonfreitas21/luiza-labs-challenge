@@ -4,6 +4,9 @@ import br.com.luizalabs.schedulerequest.domain.data.enums.StatusOfSchedule;
 import br.com.luizalabs.schedulerequest.domain.data.enums.TypeToSend;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -17,11 +20,13 @@ import java.util.UUID;
 @Table(name = "schedule")
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder(builderMethodName = "newBuilder")
+@Builder(toBuilder = true)
 public class Scheduling {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "BINARY(16)")
     private UUID uuid;
 
     @Column(name = "send_date", nullable = false)
@@ -33,16 +38,18 @@ public class Scheduling {
     private String message;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(columnDefinition = "ENUM('PENDING','SENT','DELETED')", nullable = false)
     private StatusOfSchedule status;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(columnDefinition = "ENUM('WHATSAPP','SMS','EMAIL','PUSH')", nullable = false)
     @NotNull
     private TypeToSend type;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "addressee_uuid", referencedColumnName = "uuid", foreignKey = @ForeignKey(name = "uuid"), nullable = false)
+    @ManyToOne
+    @NotFound(action = NotFoundAction.IGNORE)
+//    @JoinColumn(name = "addressee_uuid", referencedColumnName = "uuid", foreignKey = @ForeignKey(name = "uuid"), nullable = false)
+    @JoinColumn(name = "addressee_uuid", nullable = false)
     private Addressee addressee;
 
     @Column(name = "created_at")

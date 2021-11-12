@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Builder(builderMethodName = "newBuilder")
-public class DataIntegrityViolationExceptionDetails {
+public class ExceptionDetails {
     private String title;
     private int status;
     private String details;

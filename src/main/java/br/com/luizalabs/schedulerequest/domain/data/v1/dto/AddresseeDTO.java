@@ -2,16 +2,13 @@ package br.com.luizalabs.schedulerequest.domain.data.v1.dto;
 
 import lombok.*;
 
-import java.util.List;
-
-@Getter
-@Setter
-@AllArgsConstructor
+@Builder(toBuilder = true)
 @NoArgsConstructor
-@Builder(builderMethodName = "newBuilder")
+@AllArgsConstructor
+@EqualsAndHashCode
+@Getter
 public class AddresseeDTO {
     private String addressee;
     private String email;
     private String contactNumber;
-    private List<SchedulingDTO> schedules;
 }

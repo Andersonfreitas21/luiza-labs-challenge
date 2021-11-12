@@ -3,6 +3,9 @@ package br.com.luizalabs.schedulerequest.domain.data.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -17,13 +20,15 @@ import java.util.UUID;
 @Table(name = "addressee", uniqueConstraints = {@UniqueConstraint(columnNames = {"addressee"})})
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder(builderMethodName = "newBuilder")
+@Builder(toBuilder = true)
 public class Addressee implements Serializable {
 
     private static final long serialVersionUID = 8034676095293542006L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "BINARY(16)")
     private UUID uuid;
 
     @ApiModelProperty(notes = "Name address", name = "addressee", required = true, value = "Name address")
@@ -35,7 +40,8 @@ public class Addressee implements Serializable {
     @ApiModelProperty(notes = "Contact address", name = "addressee", required = true, value = "(99)9999-9999")
     private String contactNumber;
 
-    @OneToMany(mappedBy = "addressee", fetch = FetchType.LAZY)
+//    @OneToMany(mappedBy = "addressee", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "addressee", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Scheduling> schedules;
 
     @Column(name = "created_at")
