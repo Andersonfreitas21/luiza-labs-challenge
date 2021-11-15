@@ -1,6 +1,6 @@
 version: '3.1'
 services:
-  mysqlsrv:
+  db:
     image: mysql:5.7
     command: --default-authentication-plugin=mysql_native_password
     restart: always
@@ -8,11 +8,11 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: schedule-request
     ports:
-      - 3306:3306
+      - "3306:3306"
     expose:
       - 3306
     volumes:
-      - mysqlsrv-data:/var/lib/mysqlsrv/data
+      - mysqlsrv-data:/var/lib/mysql
     networks:
       - mysql-compose-network
 
@@ -38,9 +38,9 @@ services:
       - 5000
     restart: unless-stopped
     depends_on:
-      - mysqlsrv
+      - db
     links:
-      - mysqlsrv
+      - db
 
 volumes:
   mysqlsrv-data:
