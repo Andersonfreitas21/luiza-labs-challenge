@@ -31,7 +31,7 @@ API that receives a send schedule request from Communication.
 
 You can view the APIs using Swagger through this URL: http://localhost:5000/swagger-ui.html#/
 
-#### Descrição das APIs
+#### Description of APIs
 
 - Create Scheduling Request - http://localhost:5000/api/v1/schedule?Type=SMS - Body to JSON
 
