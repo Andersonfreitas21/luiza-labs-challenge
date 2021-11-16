@@ -84,12 +84,12 @@ class SchedulingRequestControllerImplTest {
     @Test
     void testFindByStatusSchedulingRequest2() {
         Addressee addressee = new Addressee();
-        addressee.setEmail("jane.doe@example.org");
+        addressee.setEmail("andersonfreitas21@gmail.com");
         addressee.setSchedules(new ArrayList<Scheduling>());
-        addressee.setContactNumber("42");
-        addressee.setCreatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        addressee.setUpdatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        addressee.setAddressee("42 Main St");
+        addressee.setContactNumber("(88)997128191");
+        addressee.setCreatedAt(LocalDateTime.now());
+        addressee.setUpdatedAt(LocalDateTime.now());
+        addressee.setAddressee("Anderson Freitas");
         addressee.setUuid(UUID.randomUUID());
 
         Scheduling scheduling = new Scheduling();
@@ -97,9 +97,9 @@ class SchedulingRequestControllerImplTest {
         scheduling.setType(TypeToSend.WHATSAPP);
         scheduling.setAddressee(addressee);
         scheduling.setStatus(StatusOfSchedule.PENDING);
-        scheduling.setCreatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        scheduling.setSendDate(LocalDateTime.of(1, 1, 1, 1, 1));
-        scheduling.setUpdatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
+        scheduling.setCreatedAt(LocalDateTime.now());
+        scheduling.setSendDate(LocalDateTime.now());
+        scheduling.setUpdatedAt(LocalDateTime.now());
         scheduling.setUuid(UUID.randomUUID());
 
         ArrayList<Scheduling> schedulingList = new ArrayList<Scheduling>();
@@ -121,12 +121,12 @@ class SchedulingRequestControllerImplTest {
     @Test
     void testFindByStatusSchedulingRequest3() {
         Addressee addressee = new Addressee();
-        addressee.setEmail("jane.doe@example.org");
+        addressee.setEmail("andersonfreitas21@gmail.com");
         addressee.setSchedules(new ArrayList<Scheduling>());
-        addressee.setContactNumber("42");
-        addressee.setCreatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        addressee.setUpdatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        addressee.setAddressee("42 Main St");
+        addressee.setContactNumber("(88)997128191");
+        addressee.setCreatedAt(LocalDateTime.now());
+        addressee.setUpdatedAt(LocalDateTime.now());
+        addressee.setAddressee("Anderson Freitas");
         addressee.setUuid(UUID.randomUUID());
 
         Scheduling scheduling = new Scheduling();
@@ -134,18 +134,18 @@ class SchedulingRequestControllerImplTest {
         scheduling.setType(TypeToSend.WHATSAPP);
         scheduling.setAddressee(addressee);
         scheduling.setStatus(StatusOfSchedule.PENDING);
-        scheduling.setCreatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        scheduling.setSendDate(LocalDateTime.of(1, 1, 1, 1, 1));
-        scheduling.setUpdatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
+        scheduling.setCreatedAt(LocalDateTime.now());
+        scheduling.setSendDate(LocalDateTime.now());
+        scheduling.setUpdatedAt(LocalDateTime.now());
         scheduling.setUuid(UUID.randomUUID());
 
         Addressee addressee1 = new Addressee();
-        addressee1.setEmail("jane.doe@example.org");
+        addressee1.setEmail("andersonfreitas21@gmail.com");
         addressee1.setSchedules(new ArrayList<Scheduling>());
-        addressee1.setContactNumber("42");
-        addressee1.setCreatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        addressee1.setUpdatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        addressee1.setAddressee("42 Main St");
+        addressee1.setContactNumber("(88)997128191");
+        addressee1.setCreatedAt(LocalDateTime.now());
+        addressee1.setUpdatedAt(LocalDateTime.now());
+        addressee1.setAddressee("Anderson Freitas");
         addressee1.setUuid(UUID.randomUUID());
 
         Scheduling scheduling1 = new Scheduling();
@@ -153,9 +153,9 @@ class SchedulingRequestControllerImplTest {
         scheduling1.setType(TypeToSend.WHATSAPP);
         scheduling1.setAddressee(addressee1);
         scheduling1.setStatus(StatusOfSchedule.PENDING);
-        scheduling1.setCreatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        scheduling1.setSendDate(LocalDateTime.of(1, 1, 1, 1, 1));
-        scheduling1.setUpdatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
+        scheduling1.setCreatedAt(LocalDateTime.now());
+        scheduling1.setSendDate(LocalDateTime.now());
+        scheduling1.setUpdatedAt(LocalDateTime.now());
         scheduling1.setUuid(UUID.randomUUID());
 
         ArrayList<Scheduling> schedulingList = new ArrayList<Scheduling>();
@@ -241,7 +241,7 @@ class SchedulingRequestControllerImplTest {
     @Test
     void testCreate() throws Exception {
         SchedulingForm schedulingForm = new SchedulingForm();
-        schedulingForm.setAddressee(new AddresseeForm("42 Main St", "jane.doe@example.org", "42"));
+        schedulingForm.setAddressee(new AddresseeForm("Anderson Freitas", "andersonfreitas21@gmail.com", "(88)997128191"));
         schedulingForm.setMessage("Not all who wander are lost");
         schedulingForm.setSendDate(null);
         String content = (new ObjectMapper()).writeValueAsString(schedulingForm);

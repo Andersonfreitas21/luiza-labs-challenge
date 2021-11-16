@@ -50,12 +50,12 @@ class ScheduleRequestServiceImplTest {
     @Test
     void testCreate() {
         Addressee addressee = new Addressee();
-        addressee.setEmail("jane.doe@example.org");
+        addressee.setEmail("andersonfreitas21@gmail.com");
         addressee.setSchedules(new ArrayList<Scheduling>());
-        addressee.setContactNumber("42");
-        addressee.setCreatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        addressee.setUpdatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        addressee.setAddressee("42 Main St");
+        addressee.setContactNumber("(88)997128191");
+        addressee.setCreatedAt(LocalDateTime.now());
+        addressee.setUpdatedAt(LocalDateTime.now());
+        addressee.setAddressee("Anderson Freitas");
         addressee.setUuid(UUID.randomUUID());
 
         Scheduling scheduling = new Scheduling();
@@ -63,19 +63,19 @@ class ScheduleRequestServiceImplTest {
         scheduling.setType(TypeToSend.WHATSAPP);
         scheduling.setAddressee(addressee);
         scheduling.setStatus(StatusOfSchedule.PENDING);
-        scheduling.setCreatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        scheduling.setSendDate(LocalDateTime.of(1, 1, 1, 1, 1));
-        scheduling.setUpdatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
+        scheduling.setCreatedAt(LocalDateTime.now());
+        scheduling.setSendDate(LocalDateTime.now());
+        scheduling.setUpdatedAt(LocalDateTime.now());
         scheduling.setUuid(UUID.randomUUID());
         when(this.schedulingRepository.save((Scheduling) any())).thenReturn(scheduling);
 
         Addressee addressee1 = new Addressee();
-        addressee1.setEmail("jane.doe@example.org");
+        addressee1.setEmail("andersonfreitas21@gmail.com");
         addressee1.setSchedules(new ArrayList<Scheduling>());
-        addressee1.setContactNumber("42");
-        addressee1.setCreatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        addressee1.setUpdatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        addressee1.setAddressee("42 Main St");
+        addressee1.setContactNumber("(88)997128191");
+        addressee1.setCreatedAt(LocalDateTime.now());
+        addressee1.setUpdatedAt(LocalDateTime.now());
+        addressee1.setAddressee("Anderson Freitas");
         addressee1.setUuid(UUID.randomUUID());
 
         Scheduling scheduling1 = new Scheduling();
@@ -83,9 +83,9 @@ class ScheduleRequestServiceImplTest {
         scheduling1.setType(TypeToSend.WHATSAPP);
         scheduling1.setAddressee(addressee1);
         scheduling1.setStatus(StatusOfSchedule.PENDING);
-        scheduling1.setCreatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        scheduling1.setSendDate(LocalDateTime.of(1, 1, 1, 1, 1));
-        scheduling1.setUpdatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
+        scheduling1.setCreatedAt(LocalDateTime.now());
+        scheduling1.setSendDate(LocalDateTime.now());
+        scheduling1.setUpdatedAt(LocalDateTime.now());
         scheduling1.setUuid(UUID.randomUUID());
         SchedulingDTO schedulingDTO = new SchedulingDTO();
         when(this.entityMapper.toDto((Scheduling) any())).thenReturn(schedulingDTO);
@@ -93,19 +93,19 @@ class ScheduleRequestServiceImplTest {
                 .thenReturn(scheduling1);
 
         Addressee addressee2 = new Addressee();
-        addressee2.setEmail("jane.doe@example.org");
+        addressee2.setEmail("andersonfreitas21@gmail.com");
         addressee2.setSchedules(new ArrayList<Scheduling>());
-        addressee2.setContactNumber("42");
-        addressee2.setCreatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        addressee2.setUpdatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        addressee2.setAddressee("42 Main St");
+        addressee2.setContactNumber("(88)997128191");
+        addressee2.setCreatedAt(LocalDateTime.now());
+        addressee2.setUpdatedAt(LocalDateTime.now());
+        addressee2.setAddressee("Anderson Freitas");
         addressee2.setUuid(UUID.randomUUID());
         Optional<Addressee> ofResult = Optional.<Addressee>of(addressee2);
         when(this.addresseeRepository.findAddresseeByAddresseeAndContactNumberAndEmail((String) any(), (String) any(),
                 (String) any())).thenReturn(ofResult);
 
         SchedulingForm schedulingForm = new SchedulingForm();
-        schedulingForm.setAddressee(new AddresseeForm("42 Main St", "jane.doe@example.org", "42"));
+        schedulingForm.setAddressee(new AddresseeForm("Anderson Freitas", "andersonfreitas21@gmail.com", "(88)997128191"));
         assertSame(schedulingDTO, this.scheduleRequestServiceImpl.create(schedulingForm, TypeToSend.WHATSAPP));
         verify(this.schedulingRepository).save((Scheduling) any());
         verify(this.entityMapper).formToEntity((SchedulingForm) any(), (Addressee) any(), (TypeToSend) any());
@@ -129,12 +129,12 @@ class ScheduleRequestServiceImplTest {
     @Test
     void testDelete() throws NotFoundException {
         Addressee addressee = new Addressee();
-        addressee.setEmail("jane.doe@example.org");
+        addressee.setEmail("andersonfreitas21@gmail.com");
         addressee.setSchedules(new ArrayList<Scheduling>());
-        addressee.setContactNumber("42");
-        addressee.setCreatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        addressee.setUpdatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        addressee.setAddressee("42 Main St");
+        addressee.setContactNumber("(88)997128191");
+        addressee.setCreatedAt(LocalDateTime.now());
+        addressee.setUpdatedAt(LocalDateTime.now());
+        addressee.setAddressee("Anderson Freitas");
         addressee.setUuid(UUID.randomUUID());
 
         Scheduling scheduling = new Scheduling();
@@ -142,19 +142,19 @@ class ScheduleRequestServiceImplTest {
         scheduling.setType(TypeToSend.WHATSAPP);
         scheduling.setAddressee(addressee);
         scheduling.setStatus(StatusOfSchedule.PENDING);
-        scheduling.setCreatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        scheduling.setSendDate(LocalDateTime.of(1, 1, 1, 1, 1));
-        scheduling.setUpdatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
+        scheduling.setCreatedAt(LocalDateTime.now());
+        scheduling.setSendDate(LocalDateTime.now());
+        scheduling.setUpdatedAt(LocalDateTime.now());
         scheduling.setUuid(UUID.randomUUID());
         Optional<Scheduling> ofResult = Optional.<Scheduling>of(scheduling);
 
         Addressee addressee1 = new Addressee();
-        addressee1.setEmail("jane.doe@example.org");
+        addressee1.setEmail("andersonfreitas21@gmail.com");
         addressee1.setSchedules(new ArrayList<Scheduling>());
-        addressee1.setContactNumber("42");
-        addressee1.setCreatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        addressee1.setUpdatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        addressee1.setAddressee("42 Main St");
+        addressee1.setContactNumber("(88)997128191");
+        addressee1.setCreatedAt(LocalDateTime.now());
+        addressee1.setUpdatedAt(LocalDateTime.now());
+        addressee1.setAddressee("Anderson Freitas");
         addressee1.setUuid(UUID.randomUUID());
 
         Scheduling scheduling1 = new Scheduling();
@@ -162,9 +162,9 @@ class ScheduleRequestServiceImplTest {
         scheduling1.setType(TypeToSend.WHATSAPP);
         scheduling1.setAddressee(addressee1);
         scheduling1.setStatus(StatusOfSchedule.PENDING);
-        scheduling1.setCreatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
-        scheduling1.setSendDate(LocalDateTime.of(1, 1, 1, 1, 1));
-        scheduling1.setUpdatedAt(LocalDateTime.of(1, 1, 1, 1, 1));
+        scheduling1.setCreatedAt(LocalDateTime.now());
+        scheduling1.setSendDate(LocalDateTime.now());
+        scheduling1.setUpdatedAt(LocalDateTime.now());
         scheduling1.setUuid(UUID.randomUUID());
         when(this.schedulingRepository.saveAndFlush((Scheduling) any())).thenReturn(scheduling1);
         when(this.schedulingRepository.findById((UUID) any())).thenReturn(ofResult);
