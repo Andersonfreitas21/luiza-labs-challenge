@@ -25,7 +25,7 @@ API that receives a send schedule request from Communication.
 ### MySQL - Import sql file
 - After running the docker-compose command it will import the `schedule-request.sql` file with your preferred database manager.
 
-`Agora você terá a aplicação rodando perfeitamente.`
+`Now you will have the application running perfectly.`
 
 ### At APIs
 
