@@ -19,9 +19,11 @@ API that receives a send schedule request from Communication.
 
 ### Docker - Building the application
 
-- Run the command `$docker build -t andersonfreitas21/schedule .` to build the application.
-- And finally, run `$docker-compose up -d` to run the application.
+- Run `$docker-compose up -d` to run the application.
 - Adminer is a browser-accessible solution for administering MySQL and freely distributed as a PHP file/Docker image
+
+### MySQL - Import sql file
+- After running the docker-compose command it will import the `schedule-request.sql` file with your preferred database manager.
 
 `Agora você terá a aplicação rodando perfeitamente.`
 
